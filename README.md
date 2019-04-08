@@ -1,11 +1,10 @@
-# Blockchain Insurance Application
+# InsureBlock
 
 This project showcases the use of blockchain in insurance domain for claim processing. In this application, we have two participants, namely insurance and police. Insurance peer is the insurance company providing the insurance for the automobiles and it is responsible for processing the claims. Police peer is responsible for verifying the accident claims.
 
 ## Included Components
 * Hyperledger Sawtooth
 * Docker
-
 
 ## Prerequisites
 
@@ -15,7 +14,6 @@ This project showcases the use of blockchain in insurance domain for claim proce
 * [NPM](https://www.npmjs.com/get-npm) - latest
 * [Node.js](https://nodejs.org/en/download/) - latest
 * [Git client](https://git-scm.com/downloads) - latest
-
 
 ## 1. Run the application
 
