@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="/stylesheets/style.css">
+<div class="eat">
+    <div class="main-box">
+        <div class="box">
+          <label>Count</label>
+          <input type="number" id="orderQuantity">
+        </div>
+        {{!-- <div class="box">
+          <label>Price</label>
+          <input type="number" id="price">
+        </div> --}}
+        <div>
+          <select id="ddlOrderType">
+            <option value="buy">Buy</option>
+            <option value="sell">Sell</option>
+          </select>
+        </div>
+        <div class="box">
+          <input type="button" id="order" value="Place Order" onclick="place_order(event)">
+        </div>
+    </div>
+    <br>
+    <br>
+    <table id="orders">
+      <tr>
+        <th>From Address</th>
+        <th>Count</th>
+        <th>Price</th>
+        <th>Order Address</th>
+        <th>Type</th>
+      </tr>
+      {{#listings}}
+      <tr class="">
+        <td>{{data.from}}</td>
+        <td>{{data.count}}</td>
+        <td>{{data.price}}</td>
+        <td>{{address}}</td>
+        <td>
+          <center>
+            <button class="button" onclick="take_order(event,'{{address}}')">
+              {{data.type}}
+            </button>
+          </center>
+        </td>
+      </tr>
+      {{/listings}}
+    </table>
+</div>
+<script src='/javascripts/main.js'></script>
