@@ -13,7 +13,10 @@ function hash(data) {
 }
 
 FAMILY_NAME='Vehicle Chain';
+<<<<<<< HEAD
 Police_Key = '5a4c22ddec700916fc8e7deaebd72ecb7be6437c824b39f400b07a7e71800e62'
+=======
+>>>>>>> athul
 
 
 /* function to create Transaction 
@@ -163,6 +166,7 @@ async _send_to_rest_api(batchListBytes){
 
     }
 
+<<<<<<< HEAD
     async addComplain(action,name,LiNum,prikey,pubkey,Claimdet){
 
       //let address = get_address(pkey)
@@ -177,6 +181,8 @@ async _send_to_rest_api(batchListBytes){
       }
     }
 
+=======
+>>>>>>> athul
 
 
 

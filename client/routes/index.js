@@ -96,6 +96,7 @@ router.post('/fileclaim',function(req, res){
   res.send({message: "Data successfully added"});
 })
 
+<<<<<<< HEAD
 router.post('/complaint',function(req, res){
   let name = req.body.name
   let LiNum = req.body.LiNum
@@ -116,6 +117,8 @@ router.post('/policelogin',function(req,res){
   res.send()
 
 })
+=======
+>>>>>>> athul
 
 
 

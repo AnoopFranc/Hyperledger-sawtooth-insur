@@ -130,9 +130,13 @@ function _getAddressToStore(action,PK,Licensenum){
     else if(action === "Claim"){
         return nameHash.slice(0,6) +'01' +keyHash.slice(0,56) +vinHash.slice(0,6)
     }
+<<<<<<< HEAD
     else if(action === "Police Complain"){
         return nameHash.slice(0,6) +'02' +keyHash.slice(0,56) +vinHash.slice(0,6)
     }
+=======
+    
+>>>>>>> athul
     }
 
 
@@ -164,7 +168,11 @@ function addpolicy (context,action,name,Email,Linum,signerPK) {
             return writeToStore(context,address,Policy_Details)
         }
         else{
+<<<<<<< HEAD
             throw new InvalidTransaction("Policy already exists");
+=======
+            throw new InvalidTransaction("Project already exists");
+>>>>>>> athul
         }
     })
 }
@@ -191,6 +199,7 @@ function claimPolicy(context,action,name,Email,LiNum,Claimdet,PK){
 }
 
 
+<<<<<<< HEAD
 
 function policecomplaint(context,action,name,LiNum,Claimdet,){
     console.log("claimimg policy")
@@ -219,6 +228,8 @@ function policecomplaint(context,action,name,LiNum,Claimdet,){
 
 
 
+=======
+>>>>>>> athul
 //transaction handler class
 
 class Vehicle extends TransactionHandler{
@@ -242,12 +253,16 @@ class Vehicle extends TransactionHandler{
         else if(action === "Claim"){
             return claimPolicy(context,Payload[0],Payload[1],Payload[2],Payload[3],Payload[4],signerPK)
         }
+<<<<<<< HEAD
         else if(action === "Police Complain" && Payload[4] === signerPK){
             return policecomplaint(context,Payload[0],Payload[1],Payload[2],Payload[3],Payload[4],Payload[5])
         }
         else {
             throw new InvalidTransaction("unknown User")
         }
+=======
+        
+>>>>>>> athul
     }
 }
 
