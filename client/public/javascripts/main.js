@@ -31,7 +31,6 @@ function fileClaim(event) {
     }
 
 
-<<<<<<< HEAD
 function policeLog(event){
     event.preventDefault();
     let privKey    = document.getElementById('password').value;
@@ -58,8 +57,6 @@ function complaint(event) {
     $.post('/complaint',{ name:name,LiNum:Lnum,pkey:pkey,PubKey:PolicyNumber,Claimdet:ClaimDetails } ,'json');
     
 }
-=======
->>>>>>> athul
 
 
 function viewData() {
