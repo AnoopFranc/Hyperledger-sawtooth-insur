@@ -130,13 +130,9 @@ function _getAddressToStore(action,PK,Licensenum){
     else if(action === "Claim"){
         return nameHash.slice(0,6) +'01' +keyHash.slice(0,56) +vinHash.slice(0,6)
     }
-<<<<<<< HEAD
     else if(action === "Police Complain"){
         return nameHash.slice(0,6) +'02' +keyHash.slice(0,56) +vinHash.slice(0,6)
     }
-=======
-    
->>>>>>> athul
     }
 
 
@@ -168,11 +164,7 @@ function addpolicy (context,action,name,Email,Linum,signerPK) {
             return writeToStore(context,address,Policy_Details)
         }
         else{
-<<<<<<< HEAD
             throw new InvalidTransaction("Policy already exists");
-=======
-            throw new InvalidTransaction("Project already exists");
->>>>>>> athul
         }
     })
 }
