@@ -1,0 +1,34 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<link rel='stylesheet' href='/stylesheets/dashboards.css' />
+<h1>Vehicle Details</h1>
+
+<a class="nav-link" id="home" href="/homePage">Home </a>
+
+<br><br>
+    <table id="vehicleDetails">
+      <tr>
+        <th>Vin Number</th>
+        <th>Engine Number</th>
+        <th>Model</th>
+        <th>Date of Manufacture</th>
+        <th>Status</th>
+        <th>Owner</th>
+        <th>Address</th>
+        <th>Date of Registration</th>
+        <th>Number Plate</th>
+      </tr>
+      {{#listings}}
+      <tr class="">
+        <td>{{vinNum}}</td>
+        <td>{{engineNo}}</td>
+        <td>{{model}}</td>
+        <td>{{dom}}</td>
+        <td>{{status}}</td>
+        <td>{{owner}}</td>
+        <td>{{address}}</td>
+        <td>{{dor}}</td>
+        <td>{{numberPlate}}</td>
+      </tr>
+      {{/listings}}
+    </table>
+    <script src="javascripts/main.js"></script>

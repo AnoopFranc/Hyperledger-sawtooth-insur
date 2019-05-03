@@ -1,0 +1,475 @@
+<head>
+
+  <title>INSUR.</title>
+  <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      font: 400 15px Josefin Sans;
+      line-height: 1.8;
+      color: #ffffff;
+      /* background-image: url("/images/e.jpg"); */
+      background: #000000;
+    }
+
+    h2 {
+      font-size: 24px;
+      text-transform: uppercase;
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    h4 {
+      font-size: 19px;
+      line-height: 1.375em;
+      color: #ffffff;
+      font-weight: 400;
+
+    }
+
+    .jumbotron {
+      background-image: url("./images/wallhaven-727748.png");
+      background-size: cover;
+      /* background-color: #f4501e00; */
+      color: #fff;
+      padding: 200px 95px;
+      font-family: Josefin Sans;
+    }
+
+    .container-fluid {
+      padding: 60px 50px;
+    }
+
+    .bg-grey {
+      background-color: #f6f6f6;
+    }
+
+    .logo-small {
+      color: #f4501e00;
+      font-size: 50px;
+    }
+
+    .logo {
+      color: #f4501e00;
+      font-size: 200px;
+    }
+
+    .thumbnail {
+      padding: 0 0 15px 0;
+      border: none;
+      border-radius: 0;
+    }
+
+    .thumbnail img {
+      width: 100%;
+      height: 100%;
+      margin-bottom: 10px;
+    }
+
+    .carousel-control.right,
+    .carousel-control.left {
+      background-image: none;
+      color: #f4501e00;
+    }
+
+    .carousel-indicators li {
+      border-color: #f4501e00;
+    }
+
+    .carousel-indicators li.active {
+      background-color: #f4501e00;
+    }
+
+    .item h4 {
+      font-size: 19px;
+      line-height: 1.375em;
+      font-weight: 400;
+      font-style: italic;
+      margin: 70px 0;
+    }
+
+    .item span {
+      font-style: normal;
+    }
+
+    .panel {
+      border: 1px solid #f4501e00;
+      border-radius: 0 !important;
+      transition: box-shadow 0.5s;
+    }
+
+    .panel:hover {
+      box-shadow: 5px 0px 40px rgba(0, 0, 0, .2);
+    }
+
+    .panel-footer .btn:hover {
+      border: 1px solid #f4501e00;
+      background-color: #fff !important;
+      color: #f4501e00;
+    }
+
+    .panel-heading {
+      color: #fff !important;
+      background-color: #f4501e00 !important;
+      padding: 25px;
+      border-bottom: 1px solid transparent;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
+
+    .panel-footer {
+      background-color: white !important;
+    }
+
+    .panel-footer h3 {
+      font-size: 32px;
+    }
+
+    #myBtn {
+
+      position: fixed;
+      /* Fixed/sticky position */
+      bottom: 20px;
+      /* Place the button at the bottom of the page */
+      right: 30px;
+      /* Place the button 30px from the right */
+      z-index: 99;
+      /* Make sure it does not overlap */
+      border: none;
+      /* Remove borders */
+      outline: none;
+      /* Remove outline */
+      background-color: #0000;
+      /* Set a background color */
+      color: white;
+      /* Text color */
+      cursor: pointer;
+      /* Add a mouse pointer on hover */
+      padding: 15px;
+      /* Some padding */
+      border-radius: 10px;
+      /* Rounded corners */
+      font-size: 13px;
+      /* Increase font size */
+    }
+
+    #myBtn:hover {
+      background-color: #555;
+      /* Add a dark-grey background on hover */
+    }
+
+    .panel-footer h4 {
+      color: rgb(255, 255, 255);
+      font-size: 14px;
+    }
+
+    .panel-footer .btn {
+      margin: 15px 0;
+      background-color: #f4501e00;
+      color: #fff;
+    }
+
+    .bagimage {
+      background-image: url("./images/e.jpg");
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    }
+
+    .navbar {
+      margin-bottom: 0;
+      background-color: #f4501e00;
+      z-index: 9999;
+      border: 0;
+      font-size: 12px !important;
+      line-height: 1.42857143 !important;
+      letter-spacing: 4px;
+      border-radius: 0;
+      font-family: Josefin Sans;
+    }
+
+    .moveimage {
+      position: relative;
+      top: 85px;
+    }
+
+    .navbar li a,
+    .navbar .navbar-brand {
+      color: rgb(255, 255, 255) !important;
+    }
+
+    .navbar-nav li a:hover,
+    .navbar-nav li.active a {
+      color: #ffee0000;
+      background-color: rgb(3, 3, 3) !important;
+    }
+
+    .navbar-default .navbar-toggle {
+      border-color: transparent;
+      color: #fff !important;
+    }
+
+    footer .glyphicon {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #f4501e00;
+    }
+
+    .slideanim {
+      visibility: hidden;
+    }
+
+    .slide {
+      animation-name: slide;
+      -webkit-animation-name: slide;
+      animation-duration: 1s;
+      -webkit-animation-duration: 1s;
+      visibility: visible;
+    }
+
+    @keyframes slide {
+      0% {
+        opacity: 0;
+        transform: translateY(70%);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0%);
+      }
+    }
+
+    @-webkit-keyframes slide {
+      0% {
+        opacity: 0;
+        -webkit-transform: translateY(70%);
+      }
+
+      100% {
+        opacity: 1;
+        -webkit-transform: translateY(0%);
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .col-sm-4 {
+        text-align: center;
+        margin: 25px 0;
+      }
+
+      .btn-lg {
+        width: 100%;
+        margin-bottom: 35px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .logo {
+        font-size: 150px;
+      }
+    }
+  </style>
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+
+          <li><a href="#services">SERVICES</a></li>
+          <li><a href="#contact">CONTACT</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="jumbotron text-center">
+    <a class="center" href="#myPage" style="padding-right:25%">
+      <img class="moveimage" src="./images/logo.png" alt="insur" style="width: 67px"></a>
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"> -->
+    </a>
+    <h1>INSUR</h1>
+    <h2 style="padding-right:10px">It's all about securing your LIFE</h2>
+
+  </div>
+
+
+
+  <!-- Container (Services Section) -->
+  <div id="services" class="container-fluid text-center" class="bagimage">
+    <h2>SERVICES</h2>
+    <div class="row slideanim">
+      <div class="col-sm-4">
+        <span class="glyphicon glyphicon-off logo-small"></span>
+        <a href="newpolicy">
+          <h4>NEW POLICY</h4><img src="./images/portfolio-icon-1.png">
+        </a>
+      </div>
+
+      <div class="col-sm-4">
+        <span class="glyphicon glyphicon-heart logo-small"></span>
+        <a href="newpolicy">
+          <h4>POLICY / CLAIM DETAILS</h4><img src="./images/service-icon-2.png">
+        </a>
+      </div>
+
+
+      <div class="col-sm-4">
+        <span class="glyphicon glyphicon-heart logo-small"></span>
+        <a href="listVehicles">
+          <h4>POLICY / CLAIM DETAILS</h4><img src="./images/service-icon-2.png">
+        </a>
+      </div>
+
+
+
+      <div class="col-sm-4">
+        <span class="glyphicon glyphicon-lock logo-small"></span>
+        <a href="fileclaim">
+          <h4>FILE CLAIM</h4><img src="./images/service-icon-4.png">
+        </a>
+      </div>
+
+    </div>
+    <div class="row slideanim">
+      <div class="col-sm-4">
+        <span class="glyphicon glyphicon-leaf logo-small"></span>
+        <a href="policecomplaint">
+          <h4>POLICE COMPLAINT</h4><img src="./images/service-icon-1.png">
+        </a>
+      </div>
+
+      <div class="row slideanim">
+        <div class="col-sm-4">
+          <span class="glyphicon glyphicon-leaf logo-small"></span>
+          <a href="policelogin">
+            <h4>POLICE LOGIN</h4><img src="./images/portfolio-icon-3.png">
+          </a>
+        </div>
+
+        <div class="row slideanim">
+          <div class="col-sm-4">
+            <span class="glyphicon glyphicon-certificate logo-small"></span>
+            <a href="newpolicy">
+              <h4>COMPLAINT STATUS</h4><img src="./images/portfolio-icon-6.png">
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+
+      <section>
+        <!-- Container (Contact Section) --><br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div id="contact" class="container-fluid " class="bagimage">
+          <h2 class="text-center">CONTACT</h2><br>
+          <br>
+          <div class="row">
+            <div class="col-sm-5">
+              <p>Contact us and we'll get back to you within 24 hours.</p>
+              <p><span class="glyphicon glyphicon-map-marker"></span> Chicago, US</p>
+              <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
+              <p><span class="glyphicon glyphicon-envelope"></span> myemail@something.com</p>
+            </div>
+            <div class="col-sm-7 slideanim">
+              <div class="row">
+                <div class="col-sm-6 form-group">
+                  <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+                </div>
+                <div class="col-sm-6 form-group">
+                  <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+                </div>
+              </div>
+              <textarea class="form-control" id="comments" name="comments" placeholder="Comment"
+                rows="5"></textarea><br>
+              <div class="row">
+                <div class="col-sm-12 form-group">
+                  <button class="btn btn-default pull-right" type="submit">Send</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <button onclick="topFunction()" id="myBtn" title="Go to top">Back to Top</button>
+
+
+      <script>
+        $(document).ready(function () {
+          // Add smooth scrolling to all links in navbar + footer link
+          $(".navbar a, footer a[href='#myPage']").on('click', function (event) {
+            // Make sure this.hash has a value before overriding default behavior
+            if (this.hash !== "") {
+              // Prevent default anchor click behavior
+              event.preventDefault();
+
+              // Store hash
+              var hash = this.hash;
+
+              // Using jQuery's animate() method to add smooth page scroll
+              // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+              $('html, body').animate({
+                scrollTop: $(hash).offset().top
+              }, 900, function () {
+
+                // Add hash (#) to URL when done scrolling (default click behavior)
+                window.location.hash = hash;
+              });
+            } // End if
+          });
+
+          $(window).scroll(function () {
+            $(".slideanim").each(function () {
+              var pos = $(this).offset().top;
+
+              var winTop = $(window).scrollTop();
+              if (pos < winTop + 600) {
+                $(this).addClass("slide");
+              }
+            });
+          });
+        })
+      </script>
+      <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("myBtn").style.display = "block";
+          } else {
+            document.getElementById("myBtn").style.display = "none";
+          }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+          document.body.scrollTop = 0; // For Safari
+          document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+      </script>
+      <script src="javascripts/main.js"></script>
