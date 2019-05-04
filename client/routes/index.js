@@ -104,7 +104,7 @@ router.post('/complaint',function(req, res){
   let Claimdet = req.body.Claimdet
   console.log("Data sent to REST API");
   var client = new Vehicle(p_key);
-  client.addComplain("Police Complain",name,LiNum,p_key,pubK,Claimdet)
+  client.addComplain("Police Complain",name,LiNum,pubK,Claimdet)
   res.send({message: "Data successfully added"});
 })
 

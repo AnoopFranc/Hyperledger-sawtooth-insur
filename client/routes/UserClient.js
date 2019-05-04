@@ -159,15 +159,15 @@ async _send_to_rest_api(batchListBytes){
 
       //let address = get_address(pkey)
       let payload = [action,name,Email,LiNum,Claimdet].join(',')
-      send_data(payload)
+      this.send_data(payload)
 
     }
 
-    async addComplain(action,name,LiNum,prikey,pubkey,Claimdet){
+    async addComplain(action,name,LiNum,pubkey,Claimdet){
 
       //let address = get_address(pkey)
-      let payload = [action,name,LiNum,prikey,pubkey,Claimdet].join(',')
-      send_data(payload)
+      let payload = [action,name,LiNum,pubkey,Claimdet].join(',')
+      this.send_data(payload)
 
     }
 

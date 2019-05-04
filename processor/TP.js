@@ -191,21 +191,23 @@ function claimPolicy(context,action,name,Email,LiNum,Claimdet,PK){
 }
 
 
-<<<<<<< HEAD
 
-function policecomplaint(context,action,name,LiNum,Claimdet,){
-    console.log("claimimg policy")
-    let address = _getAddressToStore("New Policy",PK,Linum)
-    let claimAddress =_getAddressToStore(action,PK,Linum)
-    return context.getState([address]).then(function(data){
+function policecomplaint(context,action,name,LiNum,Policynum,Claimdet,PubK){
+    console.log("Police Complaint registering")
+    if (Policynum === PubK){
+        let complainAddress =_getAddressToStore(action,Policynum,Linum)
+    return context.getState([complainAddress]).then(function(data){
     console.log("data",data)
     if(data[address] == null || data[address] == "" || data[address] == []){
         console.log("Policy Doesnt Exist!")
     }else{
-    let claim_data =[name,Email,LiNum,Claimdet]
-    return writeToStore(context,claimAddress,claim_data)
+        let complain_data =[name,Email,LiNum,Policynum,Claimdet]
+        return writeToStore(context,complainAddress,complain_data)
+        }
+        })
     }
-    })
+    
+
         
 
     
@@ -220,8 +222,6 @@ function policecomplaint(context,action,name,LiNum,Claimdet,){
 
 
 
-=======
->>>>>>> athul
 //transaction handler class
 
 class Vehicle extends TransactionHandler{
@@ -245,16 +245,9 @@ class Vehicle extends TransactionHandler{
         else if(action === "Claim"){
             return claimPolicy(context,Payload[0],Payload[1],Payload[2],Payload[3],Payload[4],signerPK)
         }
-<<<<<<< HEAD
-        else if(action === "Police Complain" && Payload[4] === signerPK){
-            return policecomplaint(context,Payload[0],Payload[1],Payload[2],Payload[3],Payload[4],Payload[5])
+        else if(action === "Police Complain"){
+            return policecomplaint(context,Payload[0],Payload[1],Payload[2],Payload[3],Payload[4],signerPK)
         }
-        else {
-            throw new InvalidTransaction("unknown User")
-        }
-=======
-        
->>>>>>> athul
     }
 }
 
