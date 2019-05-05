@@ -28,7 +28,7 @@ function newPolicy(event){
     console.log("licen",licensePlate);
     console.log("nam",name);
     let email = document.getElementById('email').value;
-    let pkey=document.getElementById('pkey').value;
+    let pkey= sessionStorage.getItem("privatekey");
     $.post('/newpolicy',{ name:name, lp:licensePlate, email:email, pkey:pkey} , 'json');
 }
 
