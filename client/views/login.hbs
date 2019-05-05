@@ -1,0 +1,33 @@
+<head>
+    <title>Police Login</title>
+    <!-- Include CSS File Here -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Include JS File Here -->
+    <script src="js/login.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="main">
+            <h2>Police Login</h2>
+            <form id="form_id" method="post" name="myform">
+                <label>privkey :</label>
+                <input type="privkey" name="privkey" id="privkey" />
+                <input type="button" value="Login" id="submit" onclick="validate()" />
+            </form>
+            <!-- <span><b class="valid">User Name : Formget<br />privkey : formget#123</b></span> -->
+        </div>
+    </div>
+</body>
+<script>
+    var attempt = 3; // Variable to count number of attempts.
+    // Below function Executes on click of login button.
+    function validate() {
+        var privkey = document.getElementById("privkey").value;
+
+        alert("Login success");
+        window.location = "/dashboard"; // Redirecting to other page.
+        return false;
+    }
+</script>
+<script src="javascripts/main.js"></script>

@@ -26,7 +26,7 @@ function fileClaim(event) {
         let pkey    = sessionStorage.getItem("privatekey");
         // let PolicyNumber = document.getElementById('policy_number').value;
         let ClaimDetails = document.getElementById('accident_details').value;
-        $.post('/fileclaim',{ name:name,email:Email,LiNum:Lnum,pkey:pkey,Claimdet:ClaimDetails } ,'json');
+        $.post('/fileclaim',{ name:name,email:Email,LiNum:Lnum,Claimdet:ClaimDetails } ,'json');
         
     }
 
