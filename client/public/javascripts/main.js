@@ -1,3 +1,26 @@
+function login_insur(){
+    const Key = document.getElementById('privkey').value;
+    if(Key.length === 0){
+        alert("please enter the Key");
+    }
+    else{
+        $.post('/',{ privateKey : Key},(data, textStatus, jqXHR)=>{
+            if(data.done =1){
+                sessionStorage.clear();
+                sessionStorage.setItem("privatekey",data.privatekey);
+                alert(data.message);
+                window.location.href='/dashboard';
+            }
+            else{
+                window.location.href='/';
+            }
+            
+        },'json');
+    }
+}
+
+
+
 function newPolicy(event){
     event.preventDefault();
     let name = document.getElementById('first_name').value;
@@ -6,16 +29,7 @@ function newPolicy(event){
     console.log("nam",name);
     let email = document.getElementById('email').value;
     let pkey=document.getElementById('pkey').value;
-    $.post('/newpolicy',{ name:name, lp:licensePlate, email:email, pkey:pkey}, (data, textStatus, jqXHR)=>{ 
-    if(data.done =1){
-        sessionStorage.clear();
-        sessionStorage.setItem("privatekey",data.privatekey);
-    }
-        else{
-            window.location.href='/';
-        }
-        
-    },'json');
+    $.post('/newpolicy',{ name:name, lp:licensePlate, email:email, pkey:pkey} , 'json');
 }
 
 function fileClaim(event) {
@@ -26,7 +40,7 @@ function fileClaim(event) {
         let pkey    = sessionStorage.getItem("privatekey");
         // let PolicyNumber = document.getElementById('policy_number').value;
         let ClaimDetails = document.getElementById('accident_details').value;
-        $.post('/fileclaim',{ name:name,email:Email,LiNum:Lnum,Claimdet:ClaimDetails } ,'json');
+        $.post('/fileclaim',{ name:name,email:Email,LiNum:Lnum,privkey:pkey,Claimdet:ClaimDetails } ,'json');
         
     }
 

@@ -64,6 +64,14 @@ router.get("/homePage", (req, res) => {
 
 //////
 
+
+router.post('/',(req,res)=>{
+  console.log("hello")
+  var Key = req.body.privateKey;
+  var client = new Vehicle(Key);
+  res.send({ done:1, privatekey: Key, message: "you have succesfully logged in using "+ Key });
+});
+
 router.post("/newpolicy", function(req, res) {
   console.log("entered");
   let name = req.body.name;
@@ -78,14 +86,14 @@ router.post("/newpolicy", function(req, res) {
   console.log("Data sent to REST API");
   var client = new Vehicle(p_key);
   client.addPolicy("New Policy", name, Email, Linum);
-  res.send({ done: 1, privatekey: p_key, message: "Data successfully added" });
+  res.send({ message: "Data successfully added" });
 });
 
 router.post("/fileclaim", function(req, res) {
   let name = req.body.name;
   let Email = req.body.email;
   let LiNum = req.body.LiNum;
-  let p_key = req.body.pkey;
+  let p_key = req.body.privkey;
   let Claimdet = req.body.Claimdet;
   console.log("Data sent to REST API");
   var client = new Vehicle(p_key);
