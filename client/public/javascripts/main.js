@@ -1,6 +1,7 @@
 function login_insur(){
     const Key = document.getElementById('privkey').value;
     if(Key.length === 0){
+        console.log(Key);
         alert("please enter the Key");
     }
     else{
@@ -17,6 +18,11 @@ function login_insur(){
             
         },'json');
     }
+}
+
+function Logout(){
+    sessionStorage.clear();
+    window.location.href='/';
 }
 
 

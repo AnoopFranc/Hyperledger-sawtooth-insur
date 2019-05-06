@@ -63,7 +63,7 @@ router.get("/listVehicles", async (req, res) => {
 
 router.post('/',(req,res)=>{
   console.log("hello")
-  var Key = req.body.privateKey;
+  var Key = req.body.pk;
   var client = new Vehicle(Key);
   res.send({ done:1, privatekey: Key, message: "you have succesfully logged in using "+ Key });
 });

@@ -175,7 +175,10 @@ function addpolicy (context,action,name,Email,Linum,signerPK) {
 function claimPolicy(context,action,name,Email,LiNum,Claimdet,PK){
     console.log("claimimg policy")
     let address = _getAddressToStore("New Policy",PK,Linum)
+    console.log(LiNum)
+    console.log(address)
     let claimAddress =_getAddressToStore(action,PK,Linum)
+    console.log(claimAddress)
     return context.getState([address]).then(function(data){
     console.log("data",data)
     if(data[address] == null || data[address] == "" || data[address] == []){
