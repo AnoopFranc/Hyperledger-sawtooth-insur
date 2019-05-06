@@ -298,7 +298,7 @@
 
           <li><a href="#services">SERVICES</a></li>
           <li><a href="#contact">CONTACT</a></li>
-          <li onclick="Logout()">logout</a></li>
+          <li><input type="button" value="Logout" id="submit" onclick="logout()" /></li>
         </ul>
       </div>
     </div>
@@ -472,5 +472,17 @@
           document.body.scrollTop = 0; // For Safari
           document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
         }
+      </script>
+
+      <script>
+
+        function logout(){
+
+          sessionStorage.clear();
+          window.location.href='/';
+
+        }
+
+
       </script>
       <script src="javascripts/main.js"></script>

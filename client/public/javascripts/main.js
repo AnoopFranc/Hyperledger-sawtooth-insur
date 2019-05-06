@@ -20,10 +20,11 @@ function login_insur(){
     }
 }
 
-function Logout(){
+/* function Logout(){
     sessionStorage.clear();
     window.location.href='/';
-}
+} */
+
 
 
 
