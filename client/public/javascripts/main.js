@@ -4,7 +4,7 @@ function login_insur(){
         alert("please enter the Key");
     }
     else{
-        $.post('/',{ privateKey : Key},(data, textStatus, jqXHR)=>{
+        $.post('/',{ pk : Key},(data, textStatus, jqXHR)=>{
             if(data.done =1){
                 sessionStorage.clear();
                 sessionStorage.setItem("privatekey",data.privatekey);

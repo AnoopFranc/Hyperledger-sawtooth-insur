@@ -28,7 +28,6 @@ router.get("/policelogin", function(req, res, next) {
   res.render("policelogin", { title: "Police Login" });
 });
 
-////
 router.get("/listVehicles", async (req, res) => {
   let lpn = sessionStorage.getItem("Linum");
   console.log(lpn);
@@ -58,9 +57,6 @@ router.get("/listVehicles", async (req, res) => {
   res.render("vehicleList", { listings: vehiclesList });
 });
 
-router.get("/homePage", (req, res) => {
-  res.render("dashboards", { title: "Dashboards" });
-});
 
 //////
 
