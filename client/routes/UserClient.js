@@ -64,7 +64,7 @@ class Vehicle {
     var encode = new TextEncoder("utf8");
     const payloadBytes = encode.encode(payload);
     var pub = this.signer.getPublicKey().asHex();
-    console.log(pub);
+    console.log("Public Key:",pub);
     const transactionHeaderBytes = protobuf.TransactionHeader.encode({
       familyName: FAMILY_NAME,
       familyVersion: "1.0",
