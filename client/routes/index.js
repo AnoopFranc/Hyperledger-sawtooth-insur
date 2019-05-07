@@ -73,15 +73,16 @@ router.post("/newpolicy", function(req, res) {
   let name = req.body.name;
   let Email = req.body.email;
   let Linum = req.body.lp;
-  sessionStorage.setItem("Linum", Linum);
+  let polnum = req.body.polnum
   // let Pnum = req.body.Pnum
   let p_key = req.body.pkey;
   console.log("name", name);
   console.log("lp", Linum);
+  console.log("policynum",polnum)
   // let Claimdet = req.body.Claimdet
   console.log("Data sent to REST API");
   var client = new Vehicle(p_key);
-  client.addPolicy("New Policy", name, Email, Linum);
+  client.addPolicy("New Policy", name, Email, Linum,polnum);
   res.send({ message: "Data successfully added" });
 });
 
@@ -91,9 +92,10 @@ router.post("/fileclaim", function(req, res) {
   let LiNum = req.body.LiNum;
   let p_key = req.body.privkey;
   let Claimdet = req.body.Claimdet;
+  let Polnum = req.body.Polnum
   console.log("Data sent to REST API");
   var client = new Vehicle(p_key);
-  client.addClaim("Claim", name, Email, LiNum, Claimdet);
+  client.addClaim("Claim", name, Email, LiNum, Claimdet,Polnum);
   res.send({ message: "Data successfully added" });
 });
 
@@ -101,11 +103,11 @@ router.post("/complaint", function(req, res) {
   let name = req.body.name;
   let LiNum = req.body.LiNum;
   let p_key = req.body.pkey;
-  let pubK = req.body.PubKey;
+  let polno = req.body.PubKey;
   let Claimdet = req.body.Claimdet;
   console.log("Data sent to REST API");
   var client = new Vehicle(p_key);
-  client.addComplain("Police Complain", name, LiNum, pubK, Claimdet);
+  client.addComplain("Police Complain", name, LiNum, polno, Claimdet);
   res.send({ message: "Data successfully added" });
 });
 

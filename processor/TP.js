@@ -195,11 +195,11 @@ function claimPolicy(context,action,name,Email,LiNum,Claimdet,PK){
 
 
 
-function policecomplaint(context,action,name,LiNum,Policynum,Claimdet,PubK){
+function policecomplaint(context,action,name,LiNum,Policynum,Claimdet,signer){
     console.log("Police Complaint registering")
-    if (Policynum === PubK){
-        let complainAddress =_getAddressToStore(action,Policynum,Linum)
-    return context.getState([complainAddress]).then(function(data){
+    let complainAddress =_getAddressToStore(action,signer,Linum)
+    let insurAddress    =_getAddressToStore("New Policy",signer,Linum)
+    return context.getState([insurAddress]).then(function(data){
     console.log("data",data)
     if(data[address] == null || data[address] == "" || data[address] == []){
         console.log("Policy Doesnt Exist!")
@@ -208,7 +208,7 @@ function policecomplaint(context,action,name,LiNum,Policynum,Claimdet,PubK){
         return writeToStore(context,complainAddress,complain_data)
         }
         })
-    }
+    
     
 
         
@@ -243,10 +243,10 @@ class Vehicle extends TransactionHandler{
         const signerPK = transactionProcessRequest.header.signerPublicKey;
         console.log("signerpk setaki")
         if (action === "New Policy"){
-            return addpolicy(context,Payload[0],Payload[1],Payload[2],Payload[3],signerPK)
+            return addpolicy(context,Payload[0],Payload[1],Payload[2],Payload[3],Payload[4],signerPK)
         }
         else if(action === "Claim"){
-            return claimPolicy(context,Payload[0],Payload[1],Payload[2],Payload[3],Payload[4],signerPK)
+            return claimPolicy(context,Payload[0],Payload[1],Payload[2],Payload[3],Payload[4],Payload[5],signerPK)
         }
         else if(action === "Police Complain"){
             return policecomplaint(context,Payload[0],Payload[1],Payload[2],Payload[3],Payload[4],signerPK)

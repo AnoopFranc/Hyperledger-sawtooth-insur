@@ -35,12 +35,17 @@ function newPolicy(event) {
   console.log("nam", name);
   let email = document.getElementById("email").value;
   let pkey = sessionStorage.getItem("privatekey");
+  var policy = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+  sessionStorage.setItem("Polnum",policy)
   $.post(
     "/newpolicy",
-    { name: name, lp: licensePlate, email: email, pkey: pkey },
+    { name: name, lp: licensePlate, email: email, pkey: pkey,polnum:policy},
     "json"
   );
 }
+
+
+
 
 function fileClaim(event) {
   event.preventDefault();
@@ -48,6 +53,7 @@ function fileClaim(event) {
   let Email = document.getElementById("email").value;
   let Lnum = document.getElementById("License").value;
   let pkey = sessionStorage.getItem("privatekey");
+  let polnum = sessionStorage.getItem("Polnum");
   // let PolicyNumber = document.getElementById('policy_number').value;
   let ClaimDetails = document.getElementById("accident_details").value;
   $.post(
@@ -57,7 +63,8 @@ function fileClaim(event) {
       email: Email,
       LiNum: Lnum,
       privkey: pkey,
-      Claimdet: ClaimDetails
+      Claimdet: ClaimDetails,
+      Polnum : polnum
     },
     "json"
   );
