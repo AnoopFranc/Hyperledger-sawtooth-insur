@@ -8,6 +8,8 @@ This project showcases the use of blockchain in insurance domain for claim proce
 
 <div class="top-screenshot"><img src="./client/public/images/Insur_1.png" style="max-width: 100%; max-height: 35em;"></div>
 
+<div class="top-screenshot"><img src="./client/public/images/Insur_2.png" style="max-width: 100%; max-height: 35em;"></div>
+
 ## Prerequisites
 
 * [Hyperledger Sawtooth](https://sawtooth.hyperledger.org/release/) - latest
