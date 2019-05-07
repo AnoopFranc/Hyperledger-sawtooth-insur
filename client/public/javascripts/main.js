@@ -75,8 +75,7 @@ function fileClaim(event) {
   );
 }
 
-function policeLog(event) {
-  event.preventDefault();
+function policeLog() {
   let privKey = document.getElementById("password").value;
   $.post(
     "/policelogin",
