@@ -54,7 +54,7 @@ router.get("/listComplaints", async (req, res) => {
     });
   }); */
 
-  res.render("vehicleList", { listings: vehiclesList });
+  res.render("vehicleList");
 });
 
 

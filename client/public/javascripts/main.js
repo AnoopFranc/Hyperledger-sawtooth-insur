@@ -8,7 +8,7 @@ function login_insur() {
       "/",
       { pk: Key },
       (data, textStatus, jqXHR) => {
-        if ((data.done = 1)) {
+        if ((data.done == 1)) {
           sessionStorage.clear();
           sessionStorage.setItem("privatekey", data.privatekey);
           alert(data.message);
@@ -40,7 +40,7 @@ function newPolicy(event) {
   $.post(
     "/newpolicy",
     { name: name, lp: licensePlate, email: email, pkey: pkey,polnum:policy}, (data, textStatus, jqXHR) => {
-      if ((data.done = 1)) {
+      if ((data.done == 1)) {
         alert(data.message);
         alert(data.policynumber);
         window.location.href = "/dashboard";
@@ -81,11 +81,11 @@ function policeLog() {
     "/policelogin",
     { prik: privKey },
     (data, textStatus, jqXHR) => {
-      if ((data.done = 1)) {
+      if ((data.done == 1)) {
         sessionStorage.clear();
         sessionStorage.setItem("privatekey", data.privatekey);
         window.location.href = "/listComplaints"
-      } else if(data.done = 0) {
+      } else if(data.done == 0) {
         window.location.href = "/policelogin";
       }
     },
