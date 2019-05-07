@@ -28,7 +28,7 @@ router.get("/policelogin", function(req, res, next) {
   res.render("policelogin", { title: "Police Login" });
 });
 
-router.get("/listVehicles", async (req, res) => {
+router.get("/listComplaints", async (req, res) => {
   let lpn = sessionStorage.getItem("Linum");
   console.log(lpn);
   var vehicleClient = new Vehicle();
@@ -115,9 +115,14 @@ router.post("/complaint", function(req, res) {
 router.post("/policelogin", function(req, res) {
   let pKey = req.body.prik;
   console.log(pKey);
-  var client = new Vehicle(pKey);
-
-  res.send();
+  var policekey = "93f583146581d4d153c257ce8d1a858a017d8683dff9fa08a69441f464622a28";
+  if (policekey === pKey){
+    res.send({done:1, privatekey: pKey, message: "you have succesfully logged in"})
+  } 
+else{
+  res.send({done:0, message: "you have entered the wrong key"});
+}
+  
 });
 
 router.post("/addVehicle", function(req, res) {

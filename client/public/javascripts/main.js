@@ -84,8 +84,9 @@ function policeLog() {
       if ((data.done = 1)) {
         sessionStorage.clear();
         sessionStorage.setItem("privatekey", data.privatekey);
-      } else {
-        window.location.href = "/";
+        window.location.href = "/listComplaints"
+      } else if(data.done = 0) {
+        window.location.href = "/policelogin";
       }
     },
     "json"

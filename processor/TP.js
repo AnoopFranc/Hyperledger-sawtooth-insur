@@ -7,8 +7,6 @@ const {
     InvalidTransaction,
     InternalErrorpayloadActions
   } = require('sawtooth-sdk/processor/exceptions')
-const {Secp256k1PrivateKey} = require('sawtooth-sdk/signing/secp256k1')
-const {createContext,CryptoFactory} = require('sawtooth-sdk/signing');
 
 var encoder = new TextEncoder('utf8')
 var decoder = new TextDecoder('utf8')
@@ -84,12 +82,7 @@ mode - vehicle model
 engine number - engine serial number 
 */      
 
-function addVehicle (context,manufacturer,vinNumber,dom,model,engineNumber) {
-    let vehicle_Address = getVehicleAddress(vinNumber)
-    let vehicle_detail =[manufacturer,vinNumber,dom,model,engineNumber]
-    return writeToStore(context,vehicle_Address,vehicle_detail)
-}
-
+var policekey = "93f583146581d4d153c257ce8d1a858a017d8683dff9fa08a69441f464622a28";
 /* function to add  vehicle registration data to chain
 parameter :
 context - validator context object
