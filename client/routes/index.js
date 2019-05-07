@@ -29,7 +29,7 @@ router.get("/policelogin", function(req, res, next) {
 });
 
 router.get("/listComplaints", async (req, res) => {
-  let lpn = sessionStorage.getItem("Linum");
+ /*  let lpn = sessionStorage.getItem("Linum");
   console.log(lpn);
   var vehicleClient = new Vehicle();
   let stateData = await vehicleClient.getVehicleListings(lpn);
@@ -52,7 +52,7 @@ router.get("/listComplaints", async (req, res) => {
       dor: vehicleDetails[5],
       numberPlate: vehicleDetails[7]
     });
-  });
+  }); */
 
   res.render("vehicleList", { listings: vehiclesList });
 });
