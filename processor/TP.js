@@ -154,10 +154,10 @@ function _getAddressToStore(action,PK,Licensenum){
 
 
 
-function addpolicy (context,action,name,Email,Linum,signerPK) {
+function addpolicy (context,action,name,Email,Linum,Polnum,signerPK) {
     console.log("addpolicy tp function")
     let address =_getAddressToStore(action,signerPK,Linum)
-    let Policy_Details =[name,Email,Linum]
+    let Policy_Details =[name,Email,Linum,Polnum]
     return context.getState([address]).then(function(data){
         console.log("data",data)
         if(data[address] == null || data[address] == "" || data[address] == []){
@@ -172,7 +172,7 @@ function addpolicy (context,action,name,Email,Linum,signerPK) {
 
 
 
-function claimPolicy(context,action,name,Email,LiNum,Claimdet,PK){
+function claimPolicy(context,action,name,Email,LiNum,Claimdet,Polnum,PK){
     console.log("claimimg policy")
     let address = _getAddressToStore("New Policy",PK,LiNum)
     console.log(LiNum)
@@ -184,7 +184,7 @@ function claimPolicy(context,action,name,Email,LiNum,Claimdet,PK){
     if(data[address] == null || data[address] == "" || data[address] == []){
         console.log("Policy Doesnt Exist!")
     }else{
-    let claim_data =[name,Email,LiNum,Claimdet]
+    let claim_data =[name,Email,LiNum,Claimdet,Polnum]
     return writeToStore(context,claimAddress,claim_data)
     }
     })
@@ -195,16 +195,16 @@ function claimPolicy(context,action,name,Email,LiNum,Claimdet,PK){
 
 
 
-function policecomplaint(context,action,name,LiNum,Policynum,Claimdet,signer){
+function policecomplaint(context,action,name,LiNum,Policynum,signer){
     console.log("Police Complaint registering")
-    let complainAddress =_getAddressToStore(action,signer,Linum)
-    let insurAddress    =_getAddressToStore("New Policy",signer,Linum)
+    let complainAddress =_getAddressToStore(action,signer,LiNum)
+    let insurAddress    =_getAddressToStore("New Policy",signer,LiNum)
     return context.getState([insurAddress]).then(function(data){
     console.log("data",data)
-    if(data[address] == null || data[address] == "" || data[address] == []){
+    if(data[insurAddress] == null || data[insurAddress] == "" || data[insurAddress] == []){
         console.log("Policy Doesnt Exist!")
     }else{
-        let complain_data =[name,Email,LiNum,Policynum,Claimdet]
+        let complain_data =[name,LiNum,Policynum]
         return writeToStore(context,complainAddress,complain_data)
         }
         })
@@ -249,7 +249,7 @@ class Vehicle extends TransactionHandler{
             return claimPolicy(context,Payload[0],Payload[1],Payload[2],Payload[3],Payload[4],Payload[5],signerPK)
         }
         else if(action === "Police Complain"){
-            return policecomplaint(context,Payload[0],Payload[1],Payload[2],Payload[3],Payload[4],signerPK)
+            return policecomplaint(context,Payload[0],Payload[1],Payload[2],Payload[3],signerPK)
         }
     }
 }

@@ -83,6 +83,7 @@ router.post("/newpolicy", function(req, res) {
   console.log("Data sent to REST API");
   var client = new Vehicle(p_key);
   client.addPolicy("New Policy", name, Email, Linum,polnum);
+  res.send({ done:1, policynumber:polnum, message: "Data successfully added" });
   res.send({ message: "Data successfully added" });
 });
 
@@ -104,10 +105,10 @@ router.post("/complaint", function(req, res) {
   let LiNum = req.body.LiNum;
   let p_key = req.body.pkey;
   let polno = req.body.PubKey;
-  let Claimdet = req.body.Claimdet;
+  //let Claimdet = req.body.Claimdet;
   console.log("Data sent to REST API");
   var client = new Vehicle(p_key);
-  client.addComplain("Police Complain", name, LiNum, polno, Claimdet);
+  client.addComplain("Police Complain", name, LiNum, polno);
   res.send({ message: "Data successfully added" });
 });
 

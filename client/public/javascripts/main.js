@@ -39,9 +39,14 @@ function newPolicy(event) {
   sessionStorage.setItem("Polnum",policy)
   $.post(
     "/newpolicy",
-    { name: name, lp: licensePlate, email: email, pkey: pkey,polnum:policy},
+    { name: name, lp: licensePlate, email: email, pkey: pkey,polnum:policy}, (data, textStatus, jqXHR) => {
+      if ((data.done = 1)) {
+        alert(data.message);
+        alert(data.policynumber);
+        window.location.href = "/dashboard";
+      }
     "json"
-  );
+    });
 }
 
 
@@ -92,9 +97,9 @@ function complaint(event) {
   event.preventDefault();
   let name = document.getElementById("name").value;
   let Lnum = document.getElementById("License").value;
-  let pkey = sessionStorage.getItem("privateK");
+  let pkey = sessionStorage.getItem("privatekey");
   let PolicyNumber = document.getElementById("policy_number").value;
-  let ClaimDetails = document.getElementById("accident_details").value;
+  //let ClaimDetails = document.getElementById("accident_details").value;
   $.post(
     "/complaint",
     {
@@ -102,7 +107,7 @@ function complaint(event) {
       LiNum: Lnum,
       pkey: pkey,
       PubKey: PolicyNumber,
-      Claimdet: ClaimDetails
+     // Claimdet: ClaimDetails
     },
     "json"
   );

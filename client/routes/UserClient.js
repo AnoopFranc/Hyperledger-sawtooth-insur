@@ -150,9 +150,9 @@ class Vehicle {
     this.send_data(payload);
   }
 
-  async addComplain(action, name, LiNum, pubkey, Claimdet) {
+  async addComplain(action, name, LiNum, pubkey) {
     //let address = get_address(pkey)
-    let payload = [action, name, LiNum, pubkey, Claimdet].join(",");
+    let payload = [action, name, LiNum, pubkey].join(",");
     this.send_data(payload);
   }
 
