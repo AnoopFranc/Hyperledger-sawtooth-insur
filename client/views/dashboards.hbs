@@ -298,7 +298,8 @@
 
           <li><a href="#services">SERVICES</a></li>
           <li><a href="#contact">CONTACT</a></li>
-          <li><a onclick="logout()">LOGOUT</a></li>
+
+          <li><a href="#blah" onclick="logout()">LOGOUT</a></li>
         </ul>
       </div>
     </div>
@@ -474,12 +475,12 @@
         }
       </script>
 
-      <script>
+      <script id="blah">
 
-        function logout(){
+        function logout() {
 
           sessionStorage.clear();
-          window.location.href='/';
+          window.location.href = '/';
 
         }
 
