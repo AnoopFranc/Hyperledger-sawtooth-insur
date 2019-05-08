@@ -22,8 +22,9 @@
         <td>{{vinNum}}</td>
         <td>{{engineNo}}</td>
         <td>{{model}}</td>
-        <td><li><a href="#approve" onclick="approve()"><b>Approve</b></a></li></td>
-        <td><li><a href="#reject" onclick="reject()"><b>Reject</b></a></li></td>
+        <td><button class="btn success">Approve</button></td>
+        <td><button class="btn danger">Reject</button></td>
+        
 {{!--         <td>{{dom}}</td>
         <td>{{status}}</td>
         <td>{{owner}}</td>
@@ -33,4 +34,62 @@
       </tr>
       {{/listings}}
     </table>
+    <style>
+.btn {
+  border: none;
+  background-color: inherit;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+/* Green */
+.success {
+  color: green;
+}
+
+.success:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Blue */
+.info {
+  color: dodgerblue;
+}
+
+.info:hover {
+  background: #2196F3;
+  color: white;
+}
+
+/* Orange */
+.warning {
+  color: orange;
+}
+
+.warning:hover {
+  background: #ff9800;
+  color: white;
+}
+
+/* Red */
+.danger {
+  color: red;
+}
+
+.danger:hover {
+  background: #f44336;
+  color: white;
+}
+
+/* Gray */
+.default {
+  color: black;
+}
+
+.default:hover {
+  background: #e7e7e7;
+}
     <script src="javascripts/main.js"></script>
