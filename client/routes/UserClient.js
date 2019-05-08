@@ -184,14 +184,12 @@ class Vehicle {
   }
 
   async getVehicleListings(linum) {
-    keyhash = hash(this.signer.getPublicKey().asHex());
-    let licensehash = hash(linum);
+    //keyhash = hash(this.signer.getPublicKey().asHex());
+    //let licensehash = hash(linum);
     let vehicleListingAddress =
       hash(FAMILY_NAME).substr(0, 6) +
-      "00" +
-      keyhash.slice(0, 56) +
-      licensehash.slice(0, 6);
-    return this.getState(vehicleListingAddress, false);
+      "02";
+    return this.getState(vehicleListingAddress, true);
   }
 
   //////

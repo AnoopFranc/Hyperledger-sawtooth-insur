@@ -29,33 +29,40 @@ router.get("/policelogin", function(req, res, next) {
 });
 
 router.get("/listComplaints", async (req, res) => {
- /*  let lpn = sessionStorage.getItem("Linum");
-  console.log(lpn);
-  var vehicleClient = new Vehicle();
-  let stateData = await vehicleClient.getVehicleListings(lpn);
+ let pk = sessionStorage.getItem("privatekey");
+  console.log("Private Key",pk);
+  var vehicleClient = new Vehicle(pk);
+  let stateData = await vehicleClient.getVehicleListings(pk);
+  console.log("StateData:",stateData);
   //console.log("listings", stateData);
+  /* try{ */
   let vehiclesList = [];
   stateData.data.forEach(vehicles => {
     if (!vehicles.data) return;
     let decodedVehicles = Buffer.from(vehicles.data, "base64").toString();
-    let vehicleDetails = decodedVehicles.split(",");
-
-    //console.log("decodedVehicles------", decodedVehicles);
+    let vehicleDetails = decodedVehicles.split(',');
+  
+    console.log("decodedVehicles------", decodedVehicles);
+    console.log("vechicle list", vehicleDetails[0],vehicleDetails[1],vehicleDetails[2]);
+    
     vehiclesList.push({
-      vinNum: vehicleDetails[1],
-      engineNo: vehicleDetails[4],
-      model: vehicleDetails[3],
-      dom: vehicleDetails[2],
+      vinNum: vehicleDetails[0],
+      engineNo: vehicleDetails[1],
+      model: vehicleDetails[2]
+      /* dom: vehicleDetails[2],
       status: vehicleDetails.length === 5 ? "Not Registered" : "Registered",
       owner: vehicleDetails[6],
       address: vehicleDetails[9],
       dor: vehicleDetails[5],
-      numberPlate: vehicleDetails[7]
+      numberPlate: vehicleDetails[7] */
     });
-  }); */
-
-  res.render("vehicleList");
+  });
+/* } catch (error) {
+  console.error(error);
+} */
+  res.render('vehicleList', { listings: vehiclesList });
 });
+
 
 
 //////
@@ -116,6 +123,7 @@ router.post("/policelogin", function(req, res) {
   let pKey = req.body.prik;
   console.log(pKey);
   var policekey = "93f583146581d4d153c257ce8d1a858a017d8683dff9fa08a69441f464622a28";
+  sessionStorage.setItem("privatekey",policekey);
   if (policekey === pKey){
     res.send({done:1, privatekey: pKey, message: "you have succesfully logged in"})
   } 
