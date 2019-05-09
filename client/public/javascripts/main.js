@@ -60,7 +60,7 @@ function fileClaim(event) {
   let pkey = sessionStorage.getItem("privatekey");
   let polnum = sessionStorage.getItem("Polnum");
   // let PolicyNumber = document.getElementById('policy_number').value;
-  let ClaimDetails = document.getElementById("accident_details").value;
+  //let ClaimDetails = document.getElementById("accident_details").value;
   $.post(
     "/fileclaim",
     {
@@ -68,7 +68,6 @@ function fileClaim(event) {
       email: Email,
       LiNum: Lnum,
       privkey: pkey,
-      Claimdet: ClaimDetails,
       Polnum : polnum
     },
     "json"

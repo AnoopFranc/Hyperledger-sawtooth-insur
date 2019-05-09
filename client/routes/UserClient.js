@@ -183,7 +183,7 @@ class Vehicle {
     return stateJSON;
   }
 
-  async getVehicleListings(linum) {
+  async getVehicleListings() {
     //keyhash = hash(this.signer.getPublicKey().asHex());
     //let licensehash = hash(linum);
     let vehicleListingAddress =

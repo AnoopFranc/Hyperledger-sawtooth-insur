@@ -137,11 +137,10 @@ router.post("/fileclaim", function(req, res) {
   let Email = req.body.email;
   let LiNum = req.body.LiNum;
   let p_key = req.body.privkey;
-  let Claimdet = req.body.Claimdet;
   let Polnum = req.body.Polnum
   console.log("Data sent to REST API");
   var client = new Vehicle(p_key);
-  client.addClaim("Claim", name, Email, LiNum, Claimdet,Polnum);
+  client.addClaim("Claim", name, Email, LiNum,Polnum);
   res.send({ message: "Data successfully added" });
 });
 
