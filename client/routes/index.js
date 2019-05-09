@@ -63,7 +63,7 @@ router.get("/policylist", async (req, res) => {
  /* } catch (error) {
    console.error(error);
  } */
-   res.render('policylist', { listings: vehiclesList });
+   res.render('complainList', { listings: vehiclesList });
  });
 
 router.get("/listComplaints", async (req, res) => {
