@@ -112,19 +112,18 @@ function registerVehicle(context,vinNumber,dor,owner,plateNumber,Register,OwnerA
 }*/
 
 
-function _getAddressToStore(action,PK,Licensenum){
+function _getAddressToStore(action,Policynum){
    
-    let keyHash  = hash(PK)
+    let keyHash  = hash(Policynum)
     let nameHash = hash("Vehicle Chain")
-    let vinHash = hash(Licensenum)
     if(action === "New Policy"){
-        return nameHash.slice(0,6) +'00' +keyHash.slice(0,56) +vinHash.slice(0,6)
+        return nameHash.slice(0,6) +'00' +keyHash.slice(0,62)
     } 
     else if(action === "Claim"){
-        return nameHash.slice(0,6) +'01' +keyHash.slice(0,56) +vinHash.slice(0,6)
+        return nameHash.slice(0,6) +'01' +keyHash.slice(0,62)
     }
     else if(action === "Police Complain"){
-        return nameHash.slice(0,6) +'02' +keyHash.slice(0,56) +vinHash.slice(0,6)
+        return nameHash.slice(0,6) +'02' +keyHash.slice(0,62)
     }
     }
 
@@ -147,9 +146,9 @@ function _getAddressToStore(action,PK,Licensenum){
 
 
 
-function addpolicy (context,action,name,Email,Linum,Polnum,signerPK) {
+function addpolicy (context,action,name,Email,Linum,Polnum) {
     console.log("addpolicy tp function")
-    let address =_getAddressToStore(action,signerPK,Linum)
+    let address =_getAddressToStore(action,Polnum)
     let Policy_Details =[name,Email,Linum,Polnum]
     return context.getState([address]).then(function(data){
         console.log("data",data)
@@ -165,19 +164,19 @@ function addpolicy (context,action,name,Email,Linum,Polnum,signerPK) {
 
 
 
-function claimPolicy(context,action,name,Email,LiNum,Claimdet,Polnum,PK){
+function claimPolicy(context,action,name,Email,LiNum,Polnum){
     console.log("claimimg policy")
-    let address = _getAddressToStore("New Policy",PK,LiNum)
+    let address = _getAddressToStore("New Policy",Polnum)
     console.log(LiNum)
     console.log(address)
-    let claimAddress =_getAddressToStore(action,PK,LiNum)
+    let claimAddress =_getAddressToStore(action,Polnum)
     console.log(claimAddress)
     return context.getState([address]).then(function(data){
     console.log("data",data)
     if(data[address] == null || data[address] == "" || data[address] == []){
         console.log("Policy Doesnt Exist!")
     }else{
-    let claim_data =[name,Email,LiNum,Claimdet,Polnum]
+    let claim_data =[name,Email,LiNum,Polnum]
     return writeToStore(context,claimAddress,claim_data)
     }
     })
@@ -188,10 +187,10 @@ function claimPolicy(context,action,name,Email,LiNum,Claimdet,Polnum,PK){
 
 
 
-function policecomplaint(context,action,name,LiNum,Policynum,signer){
+function policecomplaint(context,action,name,LiNum,Policynum){
     console.log("Police Complaint registering")
-    let complainAddress =_getAddressToStore(action,signer,LiNum)
-    let insurAddress    =_getAddressToStore("New Policy",signer,LiNum)
+    let complainAddress =_getAddressToStore(action,Policynum)
+    let insurAddress    =_getAddressToStore("New Policy",Policynum)
     return context.getState([insurAddress]).then(function(data){
     console.log("data",data)
     if(data[insurAddress] == null || data[insurAddress] == "" || data[insurAddress] == []){
@@ -236,13 +235,13 @@ class Vehicle extends TransactionHandler{
         const signerPK = transactionProcessRequest.header.signerPublicKey;
         console.log("signerpk setaki")
         if (action === "New Policy"){
-            return addpolicy(context,Payload[0],Payload[1],Payload[2],Payload[3],Payload[4],signerPK)
+            return addpolicy(context,Payload[0],Payload[1],Payload[2],Payload[3],Payload[4])
         }
         else if(action === "Claim"){
-            return claimPolicy(context,Payload[0],Payload[1],Payload[2],Payload[3],Payload[4],Payload[5],signerPK)
+            return claimPolicy(context,Payload[0],Payload[1],Payload[2],Payload[3],Payload[4])
         }
         else if(action === "Police Complain"){
-            return policecomplaint(context,Payload[0],Payload[1],Payload[2],Payload[3],signerPK)
+            return policecomplaint(context,Payload[0],Payload[1],Payload[2],Payload[3])
         }
     }
 }
