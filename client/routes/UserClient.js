@@ -200,7 +200,7 @@ class Vehicle {
     "02"+PnumHash.substr(0,62);
     console.log(PolicyClaimAddres);
 
-  return this.getState(PolicyClaimAddres, false);
+  return this.getState(PolicyClaimAddres, true);
 }
   //////
 }
