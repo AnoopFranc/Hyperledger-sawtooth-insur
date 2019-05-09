@@ -42,7 +42,8 @@ class Vehicle {
       const secp256k1pk = Secp256k1PrivateKey.fromHex(Key.trim());
       this.signer = new CryptoFactory(context).newSigner(secp256k1pk);
       this.publicKey = this.signer.getPublicKey().asHex();
-      this.address = this.get_address(this.publicKey);
+      console.log(this.publicKey);
+      this.address = this.get_address("publick keeeey" +this.publicKey);
       console.log("Storing at: " + this.address);
     }
   }
@@ -156,10 +157,10 @@ class Vehicle {
     this.send_data(payload);
   }
 
-  async authenticate(key) {
+/*   async authenticate(key) {
     if (key === Police_Key) {
     }
-  }
+  } */
 
   //////
 
@@ -179,6 +180,7 @@ class Vehicle {
       stateRequest += address;
     }
     let stateResponse = await fetch(stateRequest);
+    console.log("data",stateResponse)
     let stateJSON = await stateResponse.json();
     return stateJSON;
   }
@@ -192,9 +194,11 @@ class Vehicle {
     return this.getState(vehicleListingAddress, true);
   }
   async getPolicyListings(Pnum) {
+    console.log("entering listing");
     let PnumHash = hash(Pnum);
     let PolicyClaimAddres = hash(FAMILY_NAME).substr(0, 6) +
     "02"+PnumHash.substr(0,62);
+    console.log(PolicyClaimAddres);
 
   return this.getState(PolicyClaimAddres, false);
 }

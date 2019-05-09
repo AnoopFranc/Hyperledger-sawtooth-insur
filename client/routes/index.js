@@ -34,6 +34,7 @@ router.get("/policylist", async (req, res) => {
    console.log("Private Key",pk);
    var vehicleClient = new Vehicle(pk);
    let policy = sessionStorage.getItem("Policy");
+   console.log("policy is",policy)
    let stateData = await vehicleClient.getPolicyListings(policy);
    console.log("StateData:",stateData);
    //console.log("listings", stateData);
@@ -120,6 +121,7 @@ router.post("/newpolicy", function(req, res) {
   //let Email = req.body.email;
   let Linum = req.body.lp;
   let polnum = req.body.polnum
+  sessionStorage.setItem("Policy",polnum);
   // let Pnum = req.body.Pnum
   let p_key = req.body.pkey;
   console.log("name", name);
