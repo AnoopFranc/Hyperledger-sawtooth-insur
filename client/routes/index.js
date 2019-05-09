@@ -116,7 +116,7 @@ router.post('/',(req,res)=>{
 router.post("/newpolicy", function(req, res) {
   console.log("entered");
   let name = req.body.name;
-  let Email = req.body.email;
+  //let Email = req.body.email;
   let Linum = req.body.lp;
   let polnum = req.body.polnum
   // let Pnum = req.body.Pnum
@@ -127,20 +127,20 @@ router.post("/newpolicy", function(req, res) {
   // let Claimdet = req.body.Claimdet
   console.log("Data sent to REST API");
   var client = new Vehicle(p_key);
-  client.addPolicy("New Policy", name, Email, Linum,polnum);
+  client.addPolicy("New Policy", name, Linum,polnum);
   res.send({ done:1, policynumber:polnum, message: "Data successfully added" });
   res.send({ message: "Data successfully added" });
 });
 
 router.post("/fileclaim", function(req, res) {
   let name = req.body.name;
-  let Email = req.body.email;
+  //let Email = req.body.email;
   let LiNum = req.body.LiNum;
   let p_key = req.body.privkey;
   let Polnum = req.body.Polnum
   console.log("Data sent to REST API");
   var client = new Vehicle(p_key);
-  client.addClaim("Claim", name, Email, LiNum,Polnum);
+  client.addClaim("Claim", name, LiNum,Polnum);
   res.send({ message: "Data successfully added" });
 });
 

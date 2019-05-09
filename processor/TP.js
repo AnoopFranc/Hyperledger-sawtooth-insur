@@ -199,7 +199,7 @@ function policecomplaint(context,action,name,LiNum,Policynum){
     let readableData = decodedData.toString().split(',');
     if(data[insurAddress] == null || data[insurAddress] == "" || data[insurAddress] == []){
         console.log("Policy Doesnt Exist!")
-    }else if(readableData[1] === name && readableData[3] === LiNum){
+    }else if(readableData[1] === name && readableData[2] === LiNum){
         let status = "pending";
         let complain_data =[name,LiNum,Policynum,status]
         return writeToStore(context,complainAddress,complain_data)
@@ -255,10 +255,10 @@ class Vehicle extends TransactionHandler{
         const signerPK = transactionProcessRequest.header.signerPublicKey;
         console.log("signerpk setaki")
         if (action === "New Policy"){
-            return addpolicy(context,Payload[0],Payload[1],Payload[2],Payload[3],Payload[4])
+            return addpolicy(context,Payload[0],Payload[1],Payload[2],Payload[3])
         }
         else if(action === "Claim"){
-            return claimPolicy(context,Payload[0],Payload[1],Payload[2],Payload[3],Payload[4])
+            return claimPolicy(context,Payload[0],Payload[1],Payload[2],Payload[3])
         }
         else if(action === "Police Complain"){
             return policecomplaint(context,Payload[0],Payload[1],Payload[2],Payload[3])

@@ -33,13 +33,13 @@ function newPolicy(event) {
   let licensePlate = document.getElementById("License").value;
   console.log("licen", licensePlate);
   console.log("nam", name);
-  let email = document.getElementById("email").value;
+  //let email = document.getElementById("email").value;
   let pkey = sessionStorage.getItem("privatekey");
   var policy = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
   sessionStorage.setItem("Polnum",policy)
   $.post(
     "/newpolicy",
-    { name: name, lp: licensePlate, email: email, pkey: pkey,polnum:policy}, (data, textStatus, jqXHR) => {
+    { name: name, lp: licensePlate, pkey: pkey,polnum:policy}, (data, textStatus, jqXHR) => {
       if ((data.done == 1)) {
         alert(data.message);
         alert(data.policynumber);
@@ -55,7 +55,7 @@ function newPolicy(event) {
 function fileClaim(event) {
   event.preventDefault();
   let name = document.getElementById("first_name").value;
-  let Email = document.getElementById("email").value;
+  //let Email = document.getElementById("email").value;
   let Lnum = document.getElementById("License").value;
   let pkey = sessionStorage.getItem("privatekey");
   let polnum = sessionStorage.getItem("Polnum");
@@ -65,7 +65,6 @@ function fileClaim(event) {
     "/fileclaim",
     {
       name: name,
-      email: Email,
       LiNum: Lnum,
       privkey: pkey,
       Polnum : polnum

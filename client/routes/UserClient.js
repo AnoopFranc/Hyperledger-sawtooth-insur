@@ -135,18 +135,18 @@ class Vehicle {
     }
   }
 
-  async addPolicy(action, name, Email, Linum,polnum) {
+  async addPolicy(action, name, Linum,polnum) {
     console.log("entering policyadd");
 
     //let address = get_address(pkey)
-    let payload = [action, name, Email, Linum,polnum].join(",");
+    let payload = [action, name,Linum,polnum].join(",");
     this.send_data(payload);
     console.log("Data logged to newpolicy");
   }
 
-  async addClaim(action, name, Email, LiNum,Polnum) {
+  async addClaim(action, name,LiNum,Polnum) {
     //let address = get_address(pkey)
-    let payload = [action, name, Email, LiNum,Polnum].join(",");
+    let payload = [action, name,LiNum,Polnum].join(",");
     this.send_data(payload);
   }
 
