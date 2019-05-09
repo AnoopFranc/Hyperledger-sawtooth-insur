@@ -128,7 +128,9 @@ function _getAddressToStore(action,Policynum){
     }
 
 
-
+    
+    
+     
 
 
 
@@ -193,23 +195,26 @@ function policecomplaint(context,action,name,LiNum,Policynum){
     let insurAddress    =_getAddressToStore("New Policy",Policynum)
     return context.getState([insurAddress]).then(function(data){
     console.log("data",data)
+    let decodedData = decoder.decode(data[insurAddress]);
+    let readableData = decodedData.toString().split(',');
     if(data[insurAddress] == null || data[insurAddress] == "" || data[insurAddress] == []){
         console.log("Policy Doesnt Exist!")
-    }else{
-        let complain_data =[name,LiNum,Policynum]
+    }else if(readableData[1] === name && readableData[3] === LiNum){
+        let status = "pending";
+        let complain_data =[name,LiNum,Policynum,status]
         return writeToStore(context,complainAddress,complain_data)
+        }else{
+            throw new InvalidTransaction("Policy doesnt Match Complain");
         }
-        })
-    
-    
-
-        
-
-    
+        })   
 }
 
 
+function claimApprovel(context,policynum,verdict){
+    console.log("approving policy")
+    let address =_getAddressToStore("Police Complain",policynum)
 
+}
 
 
 
