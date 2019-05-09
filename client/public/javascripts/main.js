@@ -36,10 +36,11 @@ function newPolicy(event) {
   //let email = document.getElementById("email").value;
   let pkey = sessionStorage.getItem("privatekey");
   var policy = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-  sessionStorage.setItem("Polnum",policy)
+  var Polnum = policy.toString();
+  sessionStorage.setItem("Polnum",Polnum)
   $.post(
     "/newpolicy",
-    { name: name, lp: licensePlate, pkey: pkey,polnum:policy}, (data, textStatus, jqXHR) => {
+    { name: name, lp: licensePlate, pkey: pkey,polnum:Polnum}, (data, textStatus, jqXHR) => {
       if ((data.done == 1)) {
         alert(data.message);
         alert(data.policynumber);

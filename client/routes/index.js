@@ -109,6 +109,7 @@ router.get("/listComplaints", async (req, res) => {
 router.post('/',(req,res)=>{
   console.log("hello")
   var Key = req.body.pk;
+  sessionStorage.setItem("user",Key);
   var client = new Vehicle(Key);
   res.send({ done:1, privatekey: Key, message: "you have succesfully logged in using "+ Key });
 });
