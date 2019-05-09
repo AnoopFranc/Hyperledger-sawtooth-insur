@@ -188,7 +188,6 @@ class Vehicle {
       stateRequest += address;
     }
     let stateResponse = await fetch(stateRequest);
-    console.log("data",stateResponse)
     let stateJSON = await stateResponse.json();
     return stateJSON;
   }

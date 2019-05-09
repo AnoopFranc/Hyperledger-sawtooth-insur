@@ -115,6 +115,7 @@ function complaint(event) {
 
 function VerdictOnClaim(event,verdict,polnum){
   event.preventDefault();
+  console.log("About to approve/reject")
   if(verdict === "Approved"){
     document.getElementById("reject").disabled = true;
   }else{

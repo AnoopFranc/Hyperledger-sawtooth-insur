@@ -178,12 +178,13 @@ else{
 
 
 router.post("/claimapprovel", function(req, res) {
+  console.log("enter index")
   let verdict = req.body.Vedict;
   let policynum = req.body.Polnum;
   let p_key = sessionStorage.getItem("police")
   console.log("police private key",p_key)
   //let Claimdet = req.body.Claimdet;
-  console.log("Data sent to REST API");
+  console.log("Data sent to REST API FOR APPROVEL/REJECTION");
   var client = new Vehicle(p_key);
   client.claimApprovel("claim Approvel", verdict, policynum);
   res.send({ message: "settled" });

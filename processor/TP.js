@@ -124,6 +124,7 @@ function policecomplaint(context,action,name,LiNum,Policynum){
     console.log("data",data)
     let decodedData = decoder.decode(data[insurAddress]);
     let readableData = decodedData.toString().split(',');
+    console.log("Name in complaint",readableData[0])
     if(data[insurAddress] == null || data[insurAddress] == "" || data[insurAddress] == []){
         console.log("Policy Doesnt Exist!")
     }else if(readableData[0] === name && readableData[1] === LiNum){
@@ -150,14 +151,20 @@ function claimApprovel(context,verdict,policynum){
         let decodedData = decoder.decode(data[address]);
         let readableData = decodedData.toString().split(',');
          if(verdict === "Approved"){
-            readableData[3] = "Approved";
-            let FinalData =[readableData[0],readableData[1],readableData[2],readableData[3]]
-            return writeToStore(context,address,FinalData)
+            console.log("verdict in readable data is ",readableData[3])
+            let ApproveData=readableData;
+            ApproveData[3] = "Approved"
+            console.log("approved data being",ApproveData)
+            return writeToStore(context,address,ApproveData)
             }else{
-                readableData[3] = "Rejected";
-                let FinalData =[readableData[0],readableData[1],readableData[2],readableData[3]]
-                return writeToStore(context,address,FinalData)
+            console.log("verdict in readable data is ",readableData[3])
+            let RejectData=readableData;
+            RejectData[3] = "Rejected"
+            console.log("reject data being",RejectData)
+            return writeToStore(context,address,RejectData)
+                
             }
+            
             })
 
 }
@@ -181,7 +188,7 @@ class Vehicle extends TransactionHandler{
         let action = Payload[0]
         const signerPK = transactionProcessRequest.header.signerPublicKey;
         console.log("signerpk setaki")
-        console.log(typeof(Payload[3]))
+        console.log(typeof(Payload[1]))
         if (action === "New Policy"){
             return addpolicy(context,Payload[0],Payload[1],Payload[2],Payload[3])
         }
