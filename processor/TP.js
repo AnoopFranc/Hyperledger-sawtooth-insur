@@ -149,14 +149,16 @@ function claimApprovel(context,verdict,policynum){
     return context.getState([address]).then(function(data){
         console.log("data",data)
         let decodedData = decoder.decode(data[address]);
+        console.log("decoded",decodedData)
         let readableData = decodedData.toString().split(',');
+        console.log("readable",readableData)
          if(verdict === "Approved"){
-            console.log("verdict in readable data is ",readableData[3])
+            console.log("verdict in readable data is ",readableData[0])
             let ApproveData=readableData;
             ApproveData[3] = "Approved"
             console.log("approved data being",ApproveData)
             return writeToStore(context,address,ApproveData)
-            }else{
+            }else if(verdict === "Approved"){
             console.log("verdict in readable data is ",readableData[3])
             let RejectData=readableData;
             RejectData[3] = "Rejected"
@@ -197,9 +199,12 @@ class Vehicle extends TransactionHandler{
         }
         else if(action === "Police Complain"){
             return policecomplaint(context,Payload[0],Payload[1],Payload[2],Payload[3])
+            console.log("Inside police complaint",Payload[3]);
         }
         else if(action === "claim Approvel"){
-            return claimApprovel(context,Payload[0],Payload[1],Payload[2])
+            return claimApprovel(context,Payload[1],Payload[2])
+            console.log("Inside")
+
         }
     }
 }
