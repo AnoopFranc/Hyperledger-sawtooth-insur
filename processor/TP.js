@@ -210,15 +210,30 @@ function policecomplaint(context,action,name,LiNum,Policynum){
 }
 
 
+
+
+
+
+
 function claimApprovel(context,policynum,verdict){
     console.log("approving policy")
     let address =_getAddressToStore("Police Complain",policynum)
+    return context.getState([address]).then(function(data){
+        console.log("data",data)
+        let decodedData = decoder.decode(data[address]);
+        let readableData = decodedData.toString().split(',');
+         if(verdict === "Approved"){
+            readableData[3] = "Approved";
+            let FinalData =[readableData[0],readableData[1],readableData[2],readableData[3]]
+            return writeToStore(context,address,FinalData)
+            }else{
+                readableData[3] = "REjected";
+                let FinalData =[readableData[0],readableData[1],readableData[2],readableData[3]]
+                return writeToStore(context,address,FinalData)
+            }
+            })
 
 }
-
-
-
-
 
 
 

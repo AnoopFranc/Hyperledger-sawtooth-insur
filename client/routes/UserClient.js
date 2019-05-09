@@ -191,7 +191,13 @@ class Vehicle {
       "02";
     return this.getState(vehicleListingAddress, true);
   }
+  async getPolicyListings(Pnum) {
+    let PnumHash = hash(Pnum);
+    let PolicyClaimAddres = hash(FAMILY_NAME).substr(0, 6) +
+    "02"+PnumHash.substr(0,62);
 
+  return this.getState(PolicyClaimAddres, false);
+}
   //////
 }
 

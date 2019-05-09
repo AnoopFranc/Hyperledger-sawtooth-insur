@@ -28,11 +28,49 @@ router.get("/policelogin", function(req, res, next) {
   res.render("policelogin", { title: "Police Login" });
 });
 
+router.get("/policylist", async (req, res) => {
+  let pk = sessionStorage.getItem("user");
+
+   console.log("Private Key",pk);
+   var vehicleClient = new Vehicle(pk);
+   let policy = sessionStorage.getItem("Policy");
+   let stateData = await vehicleClient.getPolicyListings(policy);
+   console.log("StateData:",stateData);
+   //console.log("listings", stateData);
+   /* try{ */
+   let vehiclesList = [];
+   stateData.data.forEach(vehicles => {
+     if (!vehicles.data) return;
+     let decodedVehicles = Buffer.from(vehicles.data, "base64").toString();
+     let vehicleDetails = decodedVehicles.split(',');
+   
+     console.log("decodedVehicles------", decodedVehicles);
+     console.log("vechicle list", vehicleDetails[0],vehicleDetails[1],vehicleDetails[2]);
+     
+     vehiclesList.push({
+      name: vehicleDetails[0],
+       License: vehicleDetails[1],
+       policyNumber: vehicleDetails[2],
+       status: vehicleDetails[3]
+       /* dom: vehicleDetails[2],
+       status: vehicleDetails.length === 5 ? "Not Registered" : "Registered",
+       owner: vehicleDetails[6],
+       address: vehicleDetails[9],
+       dor: vehicleDetails[5],
+       numberPlate: vehicleDetails[7] */
+     });
+   });
+ /* } catch (error) {
+   console.error(error);
+ } */
+   res.render('policylist', { listings: vehiclesList });
+ });
+
 router.get("/listComplaints", async (req, res) => {
- let pk = sessionStorage.getItem("privatekey");
+  let pk = sessionStorage.getItem("police");
   console.log("Private Key",pk);
   var vehicleClient = new Vehicle(pk);
-  let stateData = await vehicleClient.getVehicleListings(pk);
+  let stateData = await vehicleClient.getVehicleListings();
   console.log("StateData:",stateData);
   //console.log("listings", stateData);
   /* try{ */
@@ -123,7 +161,7 @@ router.post("/policelogin", function(req, res) {
   let pKey = req.body.prik;
   console.log(pKey);
   var policekey = "93f583146581d4d153c257ce8d1a858a017d8683dff9fa08a69441f464622a28";
-  sessionStorage.setItem("privatekey",policekey);
+  sessionStorage.setItem("police",policekey);
   if (policekey === pKey){
     res.send({done:1, privatekey: pKey, message: "you have succesfully logged in"})
   } 

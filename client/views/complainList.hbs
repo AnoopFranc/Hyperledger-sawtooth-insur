@@ -1,0 +1,101 @@
+  <title>Policy List</title>
+  <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <script src="javascripts/main.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <link rel='stylesheet' href='/stylesheets/dashboards.css' />
+
+
+
+
+<br><br>
+    <table id="vehicleDetails">
+      <tr>
+        <th>Name</th>
+        <th>License Number</th>
+        <th>Policy Number</th>
+        <th>Status</th>
+{{!--         <th>Date of Manufacture</th>
+        <th>Status</th>
+        <th>Owner</th>
+        <th>Address</th>
+        <th>Date of Registration</th>
+        <th>Number Plate</th> --}}
+      </tr>
+      {{#listings}}
+      <tr class="">
+        <td>{{name}}</td>
+        <td>{{License}}</td>
+        <td>{{policyNumber}}</td>
+        <td>{{status}}</td>
+        
+{{!--         <td>{{dom}}</td>
+        <td>{{status}}</td>
+        <td>{{owner}}</td>
+        <td>{{address}}</td>
+        <td>{{dor}}</td>
+        <td>{{numberPlate}}</td> --}}
+      </tr>
+      {{/listings}}
+    </table>
+    <style>
+.btn {
+  border: none;
+  background-color: inherit;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+/* Green */
+.success {
+  color: green;
+}
+
+.success:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Blue */
+.info {
+  color: dodgerblue;
+}
+
+.info:hover {
+  background: #2196F3;
+  color: white;
+}
+
+/* Orange */
+.warning {
+  color: orange;
+}
+
+.warning:hover {
+  background: #ff9800;
+  color: white;
+}
+
+/* Red */
+.danger {
+  color: red;
+}
+
+.danger:hover {
+  background: #f44336;
+  color: white;
+}
+
+/* Gray */
+.default {
+  color: black;
+}
+
+.default:hover {
+  background: #e7e7e7;
+}
