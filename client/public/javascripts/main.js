@@ -112,6 +112,24 @@ function complaint(event) {
   );
 }
 
+
+function VerdictOnClaim(event,verdict,polnum){
+  event.preventDefault();
+  if(verdict === "Approved"){
+    document.getElementById("reject").disabled = true;
+  }else{
+    document.getElementById("approve").disabled = true;
+  }    $.post(
+    "/claimapprovel",
+    {
+      Vedict:verdict,
+      Polnum:polnum
+    },
+    "json"
+  );
+}
+
+
 function viewData() {
   window.location.href = "/listView";
 }

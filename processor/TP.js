@@ -142,7 +142,7 @@ function policecomplaint(context,action,name,LiNum,Policynum){
 
 
 
-function claimApprovel(context,policynum,verdict){
+function claimApprovel(context,verdict,policynum){
     console.log("approving policy")
     let address =_getAddressToStore("Police Complain",policynum)
     return context.getState([address]).then(function(data){
@@ -154,7 +154,7 @@ function claimApprovel(context,policynum,verdict){
             let FinalData =[readableData[0],readableData[1],readableData[2],readableData[3]]
             return writeToStore(context,address,FinalData)
             }else{
-                readableData[3] = "REjected";
+                readableData[3] = "Rejected";
                 let FinalData =[readableData[0],readableData[1],readableData[2],readableData[3]]
                 return writeToStore(context,address,FinalData)
             }
@@ -190,6 +190,9 @@ class Vehicle extends TransactionHandler{
         }
         else if(action === "Police Complain"){
             return policecomplaint(context,Payload[0],Payload[1],Payload[2],Payload[3])
+        }
+        else if(action === "claim Approvel"){
+            return claimApprovel(context,Payload[0],Payload[1],Payload[2])
         }
     }
 }

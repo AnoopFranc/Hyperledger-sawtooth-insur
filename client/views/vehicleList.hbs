@@ -22,8 +22,12 @@
         <td>{{vinNum}}</td>
         <td>{{engineNo}}</td>
         <td>{{model}}</td>
-        <td><button class="btn success">Approve</button></td>
-        <td><button class="btn danger">Reject</button></td>
+        <td>  <button class="button" id="approve" onclick="VerdictOnClaim(event,'{{Approved}}','{{model}}')">
+              {{Approved}}
+            </button></td>
+        <td> <button class="button" id="reject" onclick="VerdictOnClaim(event,'{{Rejected}}','{{model}}')">
+              {{Rejected}}
+            </button></td>
         
 {{!--         <td>{{dom}}</td>
         <td>{{status}}</td>

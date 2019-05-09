@@ -157,6 +157,14 @@ class Vehicle {
     this.send_data(payload);
   }
 
+  async claimApprovel(action, verdict,polnum) {
+    //let address = get_address(pkey)
+    let payload = [action, verdict,polnum].join(",");
+    this.send_data(payload);
+  }
+
+
+
 /*   async authenticate(key) {
     if (key === Police_Key) {
     }

@@ -87,7 +87,10 @@ router.get("/listComplaints", async (req, res) => {
     vehiclesList.push({
       vinNum: vehicleDetails[0],
       engineNo: vehicleDetails[1],
-      model: vehicleDetails[2]
+      model: vehicleDetails[2],
+      Approved : "Approved",
+      Rejected:"Rejected"
+
       /* dom: vehicleDetails[2],
       status: vehicleDetails.length === 5 ? "Not Registered" : "Registered",
       owner: vehicleDetails[6],
@@ -173,27 +176,17 @@ else{
   
 });
 
-router.post("/addVehicle", function(req, res) {
-  let key = req.body.key;
-  let vin = req.body.vin;
-  let model = req.body.model;
-  let dom = req.body.date;
-  let engineNo = req.body.engine;
+
+router.post("/claimapprovel", function(req, res) {
+  let verdict = req.body.Vedict;
+  let policynum = req.body.Polnum;
+  let p_key = sessionStorage.getItem("police")
+  console.log("police private key",p_key)
+  //let Claimdet = req.body.Claimdet;
   console.log("Data sent to REST API");
-  var client = new Vehicle();
-  client.addVehicle("Manufacturer", key, vin, dom, model, engineNo);
-  res.send({ message: "Data successfully added" });
+  var client = new Vehicle(p_key);
+  client.claimApprovel("claim Approvel", verdict, policynum);
+  res.send({ message: "settled" });
 });
-router.post("/registerVehicle", function(req, res) {
-  let key = req.body.key;
-  let vin = req.body.vin;
-  let OwnName = req.body.OwnerName;
-  let dor = req.body.Dor;
-  let plateNo = req.body.plate;
-  let address = req.body.addr;
-  console.log("Data sent to REST API");
-  var client = new Vehicle();
-  client.registerVehicle("Registrar", key, vin, dor, OwnName, plateNo, address);
-  res.send({ message: "Data successfully added" });
-});
+
 module.exports = router;
