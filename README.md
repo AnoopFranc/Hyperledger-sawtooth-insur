@@ -1,4 +1,4 @@
-# InsureBlock
+# CHDB205 - InsureBlock
 
 This project showcases the use of blockchain in insurance domain for claim processing. In this application, we have two participants, namely insurance and police. Insurance peer is the insurance company providing the insurance for the automobiles and it is responsible for processing the claims. Police peer is responsible for verifying the accident claims.
 
