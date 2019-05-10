@@ -69,9 +69,13 @@ function fileClaim(event) {
       LiNum: Lnum,
       privkey: pkey,
       Polnum : polnum
-    },
+    }, (data, textStatus, jqXHR) => {
+      if ((data.done == 1)) {
+        alert("Claim Registration Successful");
+        window.location.href = "/dashboard";
+      }
     "json"
-  );
+    });
 }
 
 function policeLog() {
@@ -107,9 +111,13 @@ function complaint(event) {
       pkey: pkey,
       PubKey: PolicyNumber,
      // Claimdet: ClaimDetails
-    },
+    }, (data, textStatus, jqXHR) => {
+      if ((data.done == 1)) {
+        alert("Complaint Registration Successful");
+        window.location.href = "/dashboard";
+      }
     "json"
-  );
+    });
 }
 
 
@@ -128,10 +136,5 @@ function VerdictOnClaim(event,verdict,polnum){
     },
     "json"
   );
-}
-
-
-function viewData() {
-  window.location.href = "/listView";
 }
 

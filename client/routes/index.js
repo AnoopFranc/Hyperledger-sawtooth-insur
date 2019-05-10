@@ -147,6 +147,7 @@ router.post("/fileclaim", function(req, res) {
   console.log("Data sent to REST API");
   var client = new Vehicle(p_key);
   client.addClaim("Claim", name, LiNum,Polnum);
+  res.send({ done:1});
   res.send({ message: "Data successfully added" });
 });
 
@@ -159,6 +160,7 @@ router.post("/complaint", function(req, res) {
   console.log("Data sent to REST API");
   var client = new Vehicle(p_key);
   client.addComplain("Police Complain", name, LiNum, polno);
+  res.send({ done:1});
   res.send({ message: "Data successfully added" });
 });
 

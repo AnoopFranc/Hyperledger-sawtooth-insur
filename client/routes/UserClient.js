@@ -122,7 +122,7 @@ class Vehicle {
     } else {
       console.log("new code");
       try {
-        resp = await fetch("http://rest-api:8008/batches", {
+        let resp = await fetch("http://rest-api:8008/batches", {
           method: "POST",
           headers: {
             "Content-Type": "application/octet-stream"
