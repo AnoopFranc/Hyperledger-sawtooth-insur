@@ -5,7 +5,7 @@ const { Message, EventFilter, EventList, EventSubscription, ClientEventsSubscrib
 
 const VALIDATOR_URL = "tcp://validator:4004";
 
-var { UserClient } = require('./userClient');
+var { UserClient } = require('./UserClient');
 const { TextEncoder, TextDecoder } = require('text-encoding/lib/encoding');
 const fs = require('fs');
 var encoder = new TextEncoder('utf8');
