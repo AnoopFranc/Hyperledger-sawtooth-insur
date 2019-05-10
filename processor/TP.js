@@ -28,15 +28,6 @@ const URL = 'tcp://validator:4004';
 
 
 
-
-
-
-   
-
-var policekey = "93f583146581d4d153c257ce8d1a858a017d8683dff9fa08a69441f464622a28";
-
-
-
 function _getAddressToStore(action,Policynum){
    
     let keyHash  = hash(Policynum)
@@ -53,15 +44,6 @@ function _getAddressToStore(action,Policynum){
     }
     }
 
-
-    
-    
-     
-
-
-
-
-
     function writeToStore(context, address, data){
         dataBytes = encoder.encode(data)
         let entries = {
@@ -70,8 +52,6 @@ function _getAddressToStore(action,Policynum){
     return context.setState(entries);
     
     }
-
-
 
 
 function addpolicy (context,action,name,Linum,Polnum) {
@@ -136,11 +116,6 @@ function policecomplaint(context,action,name,LiNum,Policynum){
         }
         })   
 }
-
-
-
-
-
 
 
 function claimApprovel(context,verdict,policynum){
