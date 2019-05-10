@@ -43,7 +43,7 @@ function newPolicy(event) {
     { name: name, lp: licensePlate, pkey: pkey,polnum:Polnum}, (data, textStatus, jqXHR) => {
       if ((data.done == 1)) {
         alert(data.message);
-        alert(data.policynumber);
+        alert("Policy Number:",data.policynumber);
         window.location.href = "/dashboard";
       }
     "json"
