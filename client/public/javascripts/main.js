@@ -138,3 +138,16 @@ function VerdictOnClaim(event,verdict,polnum){
   );
 }
 
+if(location.pathname == '/vehicleList') {
+  var socket = io("http://localhost:3000");
+  socket.on('orders-changed', ()=>{
+      console.log("socket message received");
+      reloadPageIfData();
+  })
+}
+
+function reloadPageIfData() {
+  if(location.pathname == '/vehicleList') {
+      location.reload();
+  }
+}

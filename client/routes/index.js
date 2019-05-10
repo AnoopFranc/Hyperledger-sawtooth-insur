@@ -3,7 +3,6 @@ var { Vehicle } = require("./UserClient");
 var router = express.Router();
 var sessionStorage = require("node-sessionstorage");
 
-/* GET home page. */
 router.get("/", function(req, res, next) {
   res.render("login", { title: "Login" });
 });
@@ -38,7 +37,6 @@ router.get("/policylist", async (req, res) => {
    let stateData = await vehicleClient.getPolicyListings(policy);
    console.log("StateData:",stateData);
    //console.log("listings", stateData);
-   /* try{ */
    let vehiclesList = [];
    stateData.data.forEach(vehicles => {
      if (!vehicles.data) return;
@@ -53,17 +51,8 @@ router.get("/policylist", async (req, res) => {
        License: vehicleDetails[1],
        policyNumber: vehicleDetails[2],
        status: vehicleDetails[3]
-       /* dom: vehicleDetails[2],
-       status: vehicleDetails.length === 5 ? "Not Registered" : "Registered",
-       owner: vehicleDetails[6],
-       address: vehicleDetails[9],
-       dor: vehicleDetails[5],
-       numberPlate: vehicleDetails[7] */
      });
    });
- /* } catch (error) {
-   console.error(error);
- } */
    res.render('complainList', { listings: vehiclesList });
  });
 
@@ -74,7 +63,6 @@ router.get("/listComplaints", async (req, res) => {
   let stateData = await vehicleClient.getVehicleListings();
   console.log("StateData:",stateData);
   //console.log("listings", stateData);
-  /* try{ */
   let vehiclesList = [];
   stateData.data.forEach(vehicles => {
     if (!vehicles.data) return;
@@ -90,24 +78,10 @@ router.get("/listComplaints", async (req, res) => {
       model: vehicleDetails[2],
       Approved : "Approved",
       Rejected:"Rejected"
-
-      /* dom: vehicleDetails[2],
-      status: vehicleDetails.length === 5 ? "Not Registered" : "Registered",
-      owner: vehicleDetails[6],
-      address: vehicleDetails[9],
-      dor: vehicleDetails[5],
-      numberPlate: vehicleDetails[7] */
     });
   });
-/* } catch (error) {
-  console.error(error);
-} */
   res.render('vehicleList', { listings: vehiclesList });
 });
-
-
-
-//////
 
 
 router.post('/',(req,res)=>{
@@ -140,7 +114,6 @@ router.post("/newpolicy", function(req, res) {
 
 router.post("/fileclaim", function(req, res) {
   let name = req.body.name;
-  //let Email = req.body.email;
   let LiNum = req.body.LiNum;
   let p_key = req.body.privkey;
   let Polnum = req.body.Polnum
@@ -156,7 +129,6 @@ router.post("/complaint", function(req, res) {
   let LiNum = req.body.LiNum;
   let p_key = req.body.pkey;
   let polno = req.body.PubKey;
-  //let Claimdet = req.body.Claimdet;
   console.log("Data sent to REST API");
   var client = new Vehicle(p_key);
   client.addComplain("Police Complain", name, LiNum, polno);
@@ -183,9 +155,8 @@ router.post("/claimapprovel", function(req, res) {
   console.log("enter index")
   let verdict = req.body.Vedict;
   let policynum = req.body.Polnum;
-  let p_key = sessionStorage.getItem("police")
-  console.log("police private key",p_key)
-  //let Claimdet = req.body.Claimdet;
+  let p_key = sessionStorage.getItem("police");
+  console.log("police private key",p_key);
   console.log("Data sent to REST API FOR APPROVEL/REJECTION");
   var client = new Vehicle(p_key);
   client.claimApprovel("claim Approvel", verdict, policynum);
