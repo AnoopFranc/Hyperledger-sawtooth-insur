@@ -79,31 +79,5 @@ const getBlock = events => {
         stateRootHash: block.state_root_hash
     }
 }
-/*
-// Parse State Delta Event
-const getChanges = event => {
-    //const event = events.find(e => e.eventType === 'sawtooth/state-delta')
-    if (!event) return []
-  
-    const changeList = StateChangeList.decode(event.data)
-    return changeList.stateChanges
-      //.filter(change => change.address.slice(0, 6) === PREFIX)
-}
-*/
-
-// const getCookiejarActionData = (blockNum, event) => {
-//   return {
-//     blockNum: blockNum,
-//     action: _.chain(event).get('attributes').map(a=>[a.key, a.value]).fromPairs().value().action,
-//     actionText: _.chain(event).get('attributes').map(a=>[a.key, a.value]).fromPairs().value().actionText,
-//     PK: _.chain(event).get('attributes').map(a=>[a.key, a.value]).fromPairs().value().user,
-//     message: event.data.toString('utf8')
-//   }
-// }
-
-// const sendCookieJarAction = (blockNum, event) => {
-//   const cookieJarActionData = getCookiejarActionData(blockNum, event);
-//   this.socket.emit("cookiejar-action", cookieJarActionData);
-// }
   
 module.exports = { eventHandler, setSocket };

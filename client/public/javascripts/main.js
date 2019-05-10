@@ -22,11 +22,6 @@ function login_insur() {
   }
 }
 
-/* function Logout(){
-    sessionStorage.clear();
-    window.location.href='/';
-} */
-
 function newPolicy(event) {
   event.preventDefault();
   let name = document.getElementById("first_name").value;
