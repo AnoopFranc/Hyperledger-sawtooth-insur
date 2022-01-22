@@ -15,7 +15,7 @@
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",
     "morgan": "~1.9.0",
-    "node-fetch": "^2.3.0",
+    "node-fetch": "^3.1.1",
     "node-sessionstorage": "^1.0.0",
     "sawtooth-sdk": "^1.0.5",
     "socket.io": "^2.2.0",
